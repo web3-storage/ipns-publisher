@@ -3,13 +3,14 @@
   "version": "0.0.0",
   "description": "IPNS publisher for w3name.",
   "private": true,
-  "main": "index.js",
+  "main": "src/index.js",
   "type": "module",
   "scripts": {
     "start": "run-p start:*",
     "start:ipfs": "ipfs daemon --init --init-profile=server",
-    "start:publisher": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:publisher": "node src/index.js",
+    "start:inbound": "node src/server.js",
+    "test": "mocha --experimental-vm-modules --timeout 5000",
     "lint": "standard"
   },
   "keywords": [
@@ -27,12 +28,17 @@
     "format-number": "^3.0.0",
     "go-ipfs": "^0.10.0",
     "ipfs-http-client": "^56.0.0",
+    "ipns": "^1.0.1",
+    "libp2p-crypto": "^0.21.2",
     "npm-run-all": "^4.1.5",
     "p-queue": "^7.2.0",
     "uint8arrays": "^3.0.0",
     "websocket": "^1.0.34"
   },
   "devDependencies": {
+    "assert": "^2.0.0",
+    "mocha": "^10.0.0",
+    "sinon": "^14.0.0",
     "standard": "^16.0.4"
   }
 }
